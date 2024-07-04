@@ -144,22 +144,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/procmem
 endif
 
-# Blur
-ifndef TARGET_NOT_USES_BLUR
-    USES_BLUR=1
-endif
-
-ifeq ($(TARGET_NOT_USES_BLUR),true)
-    USES_BLUR=0
-else
-    USES_BLUR=1
-endif
-
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.sf.blurs_are_expensive=$(USES_BLUR) \
-    ro.surface_flinger.supports_background_blur=$(USES_BLUR) \
-    persist.sysui.disableBlur=$(shell echo $$((1 - $(USES_BLUR))))
-
 # BtHelper
 PRODUCT_PACKAGES += \
     BtHelper
